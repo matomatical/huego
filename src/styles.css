@@ -1,0 +1,76 @@
+.color-picker-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.color-picker {
+    margin: 0.2em;
+    border: 1px solid black;
+}
+
+/* custom radio
+ * buttons https://moderncss.dev/pure-css-custom-styled-radio-buttons/
+ */
+
+.radio {
+  /* disable default styling */
+  appearance: none;
+  margin: 0;
+  border: 1px solid gray;
+}
+
+.radio::focus {
+  box-shadow: 0px 0px 1px 2px purple;
+}
+
+.radio:checked {
+  box-shadow: 0px 0px 1px 2px black;
+}
+  
+.radio.wide {
+  width:  1.85em;
+  height: 1.15em;
+}
+
+.radio.wide:not(:first-child) {
+  border-top: none;
+}
+
+.radio.tall {
+  width: 1.15em;
+  height: 1.85em;
+}
+
+.radio.tall:not(:first-child) {
+  border-left: none;
+}
+
+.column-header-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.row-header-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.grid-v {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.grid-h {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.color-cell {
+    height: 2em;
+    width: 2em;
+    padding: 0;
+}

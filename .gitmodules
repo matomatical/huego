@@ -1,0 +1,3 @@
+[submodule "ghp"]
+	path = ghp
+	url = https://github.com/matomatical/huego-ghp

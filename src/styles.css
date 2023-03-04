@@ -31,7 +31,7 @@
   
 .radio.wide {
   width:  1.85em;
-  height: 1.15em;
+  height: 1.5em;
 }
 
 .radio.wide:not(:first-child) {
@@ -39,7 +39,7 @@
 }
 
 .radio.tall {
-  width: 1.15em;
+  width: 1.5em;
   height: 1.85em;
 }
 

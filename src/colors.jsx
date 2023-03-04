@@ -7,22 +7,12 @@ const DEFAULT_COLORS = [
 
 function App() {
     const [ colors, setColors ] = React.useState(DEFAULT_COLORS);
-    const [ rows, setRows ] = React.useState(Array(16).fill(0));
-    const [ cols, setCols ] = React.useState(Array(16).fill(0));
 
-    return (
-        <>
-            <h2>Plain Weave Designer</h2>
-            <ColorController
-                colors={colors} setColors={setColors}
-            />
-            <WeavingTable
-                colors={colors}
-                rows={rows}     setRows={setRows}
-                cols={cols}     setCols={setCols}
-            />
-        </>
-    );
+    return (<>
+            <h2>HueGo Weaving</h2>
+            <ColorController colors={colors} setColors={setColors} />
+            <WeavingTable colors={colors} />
+    </>);
 }
 
 
@@ -59,19 +49,31 @@ function ColorPicker({ color, index, updater }) {
 }
 
 
-function WeavingTable({colors, rows, setRows, cols, setCols}) {
+function WeavingTable({ colors }) {
+    const [ rows, setRows ] = React.useState(Array(16).fill(0));
+    const [ cols, setCols ] = React.useState(Array(16).fill(0));
     const [ grid, setGrid ] = React.useState(false);
     return (<>
         <h3>Create your weave</h3>
-        <button onClick={arrayStateExtendByN(setRows,4,0)}>
-            4 more rows
-        </button>
-        <button onClick={arrayStateExtendByN(setCols,4,0)}>
-            4 more columns
-        </button>
-        <button onClick={() => {setGrid(!grid)}}>
-            grid lines on/off
-        </button>
+        <p>
+            Columns:
+            &nbsp;
+            <button onClick={arrayStateExtendByN(setCols,4,0)}>+4</button>
+            <button onClick={arrayStateExtendByN(setCols,1,0)}>+1</button>
+            <button onClick={arrayStateTruncateByN(setCols,1)}>-1</button>
+            <button onClick={arrayStateTruncateByN(setCols,4)}>-4</button>
+            &nbsp;
+            Rows:
+            &nbsp;
+            <button onClick={arrayStateExtendByN(setRows,4,0)}>+4</button>
+            <button onClick={arrayStateExtendByN(setRows,1,0)}>+1</button>
+            <button onClick={arrayStateTruncateByN(setRows,1)}>-1</button>
+            <button onClick={arrayStateTruncateByN(setRows,4)}>-4</button>
+            &nbsp;
+            grid lines:
+            &nbsp;
+            <button onClick={() => {setGrid(!grid)}}>on/off</button>
+        </p>
         <table style={{borderSpacing: "0px"}}>
             <tbody>{rows.map(
                 (r, i) => (<tr key={i}>
@@ -107,6 +109,7 @@ function WeavingTable({colors, rows, setRows, cols, setCols}) {
     </>);
 }
 
+
 function ColorSquare({colColor, rowColor, border}) {
     tdStyle = {
         border: (border ? "1px solid black" : "none"),
@@ -135,18 +138,16 @@ function ColumnHeader({ column, index, colors, updater }) {
     let name = "column" + index;
     return (<div className="column-header-container">
         {colors.map((color, i) => 
-            <input
-                key={i}
-                type="radio"
-                className="radio wide"
+            <ColorSelector key={i}
+                color={color}
                 name={name}
                 value={i}
-                defaultChecked={i == 0}
-                onChange={e => updater(e.target.value)}
-                style={{backgroundColor: color}}
+                checked={i == column}
+                updater={updater}
+                wide={true}
             />
         )}
-    </div>)
+    </div>);
 }
 
 
@@ -154,18 +155,35 @@ function RowHeader({ row, index, colors, updater }) {
     let name = "row" + index;
     return (<div className="row-header-container">
         {colors.map((color, i) => 
-            <input
-                key={i}
-                type="radio"
-                className="radio tall"
+            <ColorSelector key={i}
+                color={color}
                 name={name}
                 value={i}
-                defaultChecked={i == 0}
-                onChange={e => updater(e.target.value)}
-                style={{backgroundColor: color}}
+                updater={updater}
+                checked={i == row}
+                wide={false}
             />
         )}
     </div>)
+}
+
+
+function ColorSelector({ color, updater, name, value, wide, checked }) {
+    function drag(event) {
+        if (event.buttons % 2 == 1) {
+            updater(event.target.value);
+        }
+    }
+    return (<input type="radio"
+        name={name}
+        value={value}
+        checked={checked}
+        className={"radio " + (wide ? "wide" : "tall")}
+        onChange={e => updater(e.target.value)}
+        onMouseEnter={drag}
+        onMouseLeave={drag}
+        style={{backgroundColor: color}}
+    />);
 }
 
 
@@ -181,6 +199,11 @@ const arrayStateSetterI = (setArray, index) => (item) => {
 
 function arrayStateExtendByN(setArray, n, defaultValue) {
     return () => setArray(array => [...array, ...Array(n).fill(defaultValue)]);
+}
+
+function arrayStateTruncateByN(setArray, n) {
+    // assume n > 0
+    return () => setArray(array => array.slice(0, -n));
 }
 
 

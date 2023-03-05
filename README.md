@@ -68,3 +68,23 @@ Instructions:
 Alternatives:
 
 * Whatever static website hosting you like.
+
+Roadmap
+-------
+
+Proof of concept:
+
+* [x] display the checkered grid
+* [x] change the colour of each row/column
+* [x] dynamic colors
+* [x] dynamic grid
+
+First round of user testing and feedback
+
+* [x] decrease number of rows/columns
+* [x] click and drag to set colours on columns/rows
+
+Moving forward:
+
+* [ ] persist designs (through URL?)
+* [ ] review and improve codebase

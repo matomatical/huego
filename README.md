@@ -78,11 +78,13 @@ Proof of concept:
 * [x] change the colour of each row/column
 * [x] dynamic colors
 * [x] dynamic grid
+* [x] deploy with github pages
 
 First round of user testing and feedback
 
 * [x] decrease number of rows/columns
 * [x] click and drag to set colours on columns/rows
+* [x] open source (this repo is the result)
 
 Moving forward:
 

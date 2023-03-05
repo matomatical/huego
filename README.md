@@ -93,3 +93,4 @@ Moving forward:
 
 * [ ] persist designs (through URL?)
 * [ ] review and improve codebase
+* [ ] Hugo Weaving favicon

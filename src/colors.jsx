@@ -7,7 +7,6 @@ const DEFAULT_COLORS = [
 
 function App() {
     const [ colors, setColors ] = React.useState(DEFAULT_COLORS);
-
     return (<>
             <h2>HueGo Weaving</h2>
             <ColorController colors={colors} setColors={setColors} />
@@ -58,17 +57,17 @@ function WeavingTable({ colors }) {
         <p>
             Columns:
             &nbsp;
-            <button onClick={arrayStateExtendByN(setCols,4,0)}>+4</button>
-            <button onClick={arrayStateExtendByN(setCols,1,0)}>+1</button>
-            <button onClick={arrayStateTruncateByN(setCols,1)}>-1</button>
             <button onClick={arrayStateTruncateByN(setCols,4)}>-4</button>
+            <button onClick={arrayStateTruncateByN(setCols,1)}>-1</button>
+            <button onClick={arrayStateExtendByN(setCols,1,0)}>+1</button>
+            <button onClick={arrayStateExtendByN(setCols,4,0)}>+4</button>
             &nbsp;
             Rows:
             &nbsp;
-            <button onClick={arrayStateExtendByN(setRows,4,0)}>+4</button>
-            <button onClick={arrayStateExtendByN(setRows,1,0)}>+1</button>
-            <button onClick={arrayStateTruncateByN(setRows,1)}>-1</button>
             <button onClick={arrayStateTruncateByN(setRows,4)}>-4</button>
+            <button onClick={arrayStateTruncateByN(setRows,1)}>-1</button>
+            <button onClick={arrayStateExtendByN(setRows,1,0)}>+1</button>
+            <button onClick={arrayStateExtendByN(setRows,4,0)}>+4</button>
             &nbsp;
             grid lines:
             &nbsp;

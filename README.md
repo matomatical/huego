@@ -6,6 +6,8 @@ A dead-simple static React app for designing plain weaving patterns.
 Used as a project to practice building UIs with React, and for my partner to
 design weaving patterns.
 
+![User interface demonstration](demo.png)
+
 Usage
 -----
 
@@ -19,7 +21,7 @@ Instructions:
 
 Example design:
 
-![Example design](demo.png)
+![Example design](design.png)
 
 Testimonials:
 

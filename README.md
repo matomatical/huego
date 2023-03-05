@@ -1,9 +1,9 @@
 HueGo Weaving
 =============
 
-A dead-simple React app for designing plain weaving patterns.
+A dead-simple static React app for designing plain weaving patterns.
 
-Used as a project to practice building UI with React, and for my partner to
+Used as a project to practice building UIs with React, and for my partner to
 design weaving patterns.
 
 Usage
@@ -34,14 +34,15 @@ Development
 
 Requirements:
 
-1. make
-2. swc
+1. [Make](https://www.gnu.org/software/make/)
+2. [swc](swc.rs) for transpiling React JSX to plain JS
 
 Instructions:
 
 1. Work in `src/`.
 2. Build with `make` from root directory
-3. Browse to `dev/index.html`
+3. Navigate your browser to `dev/index.html`
+   (the site is completely static and needs no server...)
 
 Deployment (GitHub pages)
 ----------

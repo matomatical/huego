@@ -6,7 +6,7 @@ A dead-simple static React app for designing plain weaving patterns.
 Used as a project to practice building UIs with React, and for my partner to
 design weaving patterns.
 
-![User interface demonstration](demo.png)
+<img src="demo.png" alt="HueGo user interface demo" width="500" />
 
 Usage
 -----
@@ -21,7 +21,7 @@ Instructions:
 
 Example design:
 
-![Example design](design.png)
+<img src="design.png" alt="example design" width="500" />
 
 Testimonials:
 

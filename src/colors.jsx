@@ -52,6 +52,7 @@ function WeavingTable({ colors }) {
     const [ rows, setRows ] = React.useState(Array(16).fill(0));
     const [ cols, setCols ] = React.useState(Array(16).fill(0));
     const [ grid, setGrid ] = React.useState(false);
+    const [ dense, setDense ] = React.useState(false);
     return (<>
         <h3>Create your weave</h3>
         <p>
@@ -72,6 +73,10 @@ function WeavingTable({ colors }) {
             grid lines:
             &nbsp;
             <button onClick={() => {setGrid(!grid)}}>on/off</button>
+            &nbsp;
+            dense mode:
+            &nbsp;
+            <button onClick={() => {setDense(!dense)}}>on/off</button>
         </p>
         <table style={{borderSpacing: "0px"}}>
             <tbody>{rows.map(
@@ -79,6 +84,7 @@ function WeavingTable({ colors }) {
                     {cols.map((c, j) =>
                         <ColorSquare key={j}
                             border={grid}
+                            dense={dense}
                             rowColor={colors[r]}
                             colColor={colors[c]}
                         />
@@ -109,20 +115,20 @@ function WeavingTable({ colors }) {
 }
 
 
-function ColorSquare({colColor, rowColor, border}) {
-    tdStyle = {
+function ColorSquare({colColor, rowColor, border, dense }) {
+    const tdStyle = {
         border: (border ? "1px solid black" : "none"),
     }
+    const n = dense ? 4 : 2;
     return (<td className="color-cell" style={tdStyle}>
         <div style={{height: "100%", width: "100%" }} className="grid-v">
-            <div className="grid-h" style={{flexGrow: 1}}>
-                <Cell color={rowColor}/>
-                <Cell color={colColor}/>
-            </div>
-            <div className="grid-h" style={{flexGrow: 1}}>
-                <Cell color={colColor}/>
-                <Cell color={rowColor}/>
-            </div>
+            {[...Array(n).keys()].map(i =>
+                <div key={i} className="grid-h" style={{flexGrow: 1}}>
+                    {[...Array(n).keys()].map(j =>
+                        <Cell color={ ((i+j) % 2) ? colColor : rowColor }/>
+                    )}
+                </div>
+            )}
         </div>
     </td>);
 }

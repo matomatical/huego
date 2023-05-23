@@ -91,6 +91,7 @@ First round of user testing and feedback
 
 Moving forward:
 
+* [x] add dense mode
 * [ ] persist designs (through URL?)
 * [ ] review and improve codebase
 * [ ] Hugo Weaving favicon

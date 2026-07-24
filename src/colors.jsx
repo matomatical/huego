@@ -111,11 +111,13 @@ function WeavingTable({ colors }) {
                 <td>{/* blank corner cell */}</td>
             </tr></tfoot>
         </table>
+        <h3>Count your weave</h3>
+        <WeaveStatistics colors={colors} rows={rows} cols={cols} />
     </>);
 }
 
 
-function ColorSquare({colColor, rowColor, border, dense }) {
+function ColorSquare({ colColor, rowColor, border, dense }) {
     const tdStyle = {
         border: (border ? "1px solid black" : "none"),
     }
@@ -125,7 +127,7 @@ function ColorSquare({colColor, rowColor, border, dense }) {
             {[...Array(n).keys()].map(i =>
                 <div key={i} className="grid-h" style={{flexGrow: 1}}>
                     {[...Array(n).keys()].map(j =>
-                        <Cell color={ ((i+j) % 2) ? colColor : rowColor }/>
+                        <Cell key={j} color={ ((i+j) % 2) ? colColor : rowColor }/>
                     )}
                 </div>
             )}
@@ -189,6 +191,44 @@ function ColorSelector({ color, updater, name, value, wide, checked }) {
         onMouseLeave={drag}
         style={{backgroundColor: color}}
     />);
+}
+
+
+function WeaveStatistics({ colors, rows, cols }) {
+    return (<>
+        <p>Warp statistics:</p>
+        <ColorCounts colors={colors} choices={cols} />
+        <p>Weft statistics:</p>
+        <ColorCounts colors={colors} choices={rows} />
+    </>);
+}
+
+
+function ColorCounts({ colors, choices }) {
+    const colorCounts = choices.reduce((acc, val) => {
+        acc[val]++;
+        return acc;
+    }, Array(colors.length).fill(0));
+    return (<table style={{border: "1px solid black"}}>
+        <tbody>
+        <tr>
+            <td>Color</td>
+            {colors.map((c, i) => {
+                return (<td key={i} style={{textAlign: "center", backgroundColor: c}}>
+                    Color {i}
+                </td>);
+            })}
+        </tr>
+        <tr>
+            <td># choices</td>
+            {colors.map((c, i) => {
+                return (<td key={i} style={{textAlign: "center", backgroundColor: c}}>
+                    {colorCounts[i]}
+                </td>);
+            })}
+        </tr>
+        </tbody>
+    </table>);
 }
 
 

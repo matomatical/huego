@@ -95,3 +95,9 @@ Moving forward:
 * [ ] persist designs (through URL?)
 * [ ] review and improve codebase
 * [ ] Hugo Weaving favicon
+
+Second wave:
+
+* [x] Count the rows/columns of each color
+* [ ] Button to reset weft
+* [ ] Button to copy warp into weft

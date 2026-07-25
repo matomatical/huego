@@ -8,9 +8,9 @@ const DEFAULT_COLORS = [
 function App() {
     const [ colors, setColors ] = React.useState(DEFAULT_COLORS);
     return (<>
-            <h2>HueGo Weaving</h2>
-            <ColorController colors={colors} setColors={setColors} />
-            <WeavingTable colors={colors} />
+        <h2>HueGo Weaving</h2>
+        <ColorController colors={colors} setColors={setColors} />
+        <WeavingTable colors={colors} />
     </>);
 }
 

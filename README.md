@@ -94,7 +94,7 @@ Moving forward:
 * [x] add dense mode
 * [ ] persist designs (through URL?)
 * [ ] review and improve codebase
-* [ ] Hugo Weaving favicon
+* [x] Hugo Weaving favicon
 
 Second wave:
 
